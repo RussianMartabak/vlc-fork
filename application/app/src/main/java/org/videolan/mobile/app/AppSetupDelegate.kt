@@ -29,12 +29,14 @@ import kotlinx.coroutines.DEBUG_PROPERTY_NAME
 import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_ON
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.videolan.BuildConfig
 import org.videolan.libvlc.Dialog
 import org.videolan.libvlc.FactoryManager
 import org.videolan.libvlc.LibVLCFactory
 import org.videolan.libvlc.MediaFactory
 import org.videolan.libvlc.interfaces.ILibVLCFactory
 import org.videolan.libvlc.interfaces.IMediaFactory
+
 import org.videolan.mobile.app.delegates.IIndexersDelegate
 import org.videolan.mobile.app.delegates.IMediaContentDelegate
 import org.videolan.mobile.app.delegates.IndexersDelegate
@@ -44,7 +46,6 @@ import org.videolan.resources.AppContextProvider
 import org.videolan.resources.VLCInstance
 import org.videolan.tools.AppScope
 import org.videolan.tools.Settings
-import org.videolan.vlc.BuildConfig
 import org.videolan.vlc.gui.SendCrashActivity
 import org.videolan.vlc.gui.helpers.NotificationHelper
 import org.videolan.vlc.util.DialogDelegate
@@ -97,7 +98,7 @@ class AppSetupDelegate : AppDelegate,
             Dialog.setCallbacks(VLCInstance.getInstance(this@backgroundInit), DialogDelegate)
         }
         packageManager.setComponentEnabledSetting(ComponentName(this@backgroundInit, SendCrashActivity::class.java),
-                if (BuildConfig.BETA) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP)
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP)
         if (!AndroidDevices.isAndroidTv) sendBroadcast(Intent(MiniPlayerAppWidgetProvider.ACTION_WIDGET_INIT).apply {
             component = ComponentName(appContextProvider.appContext, MiniPlayerAppWidgetProvider::class.java)
         })

@@ -79,6 +79,8 @@ import org.videolan.vlc.viewmodels.mobile.getViewModel
 
 private const val TAG = "VLC/VideoListFragment"
 
+
+//this fragment display the list of videos/medialibraryitem in a recycler view, using a list adapter that use onAnyChange to set the list
 class VideoGridFragment : MediaBrowserFragment<VideosViewModel>(), SwipeRefreshLayout.OnRefreshListener, CtxActionReceiver {
 
     private lateinit var dataObserver: RecyclerView.AdapterDataObserver

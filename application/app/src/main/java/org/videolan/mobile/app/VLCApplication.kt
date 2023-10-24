@@ -32,6 +32,7 @@ import org.videolan.vlc.util.DialogDelegate
 
 private const val TAG = "VLC/VLCApplication"
 
+//the application class, used multidex so can use more than 64K methods
 class VLCApplication : MultiDexApplication(), Dialog.Callbacks by DialogDelegate, AppDelegate by AppSetupDelegate() {
 
     init {
